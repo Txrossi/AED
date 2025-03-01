@@ -1,0 +1,8 @@
+C:/Users/tulio/Repo/AED/build/CMakeFiles/edit_cache.dir
+C:/Users/tulio/Repo/AED/build/CMakeFiles/rebuild_cache.dir
+C:/Users/tulio/Repo/AED/build/src/CMakeFiles/projeto.dir
+C:/Users/tulio/Repo/AED/build/src/CMakeFiles/edit_cache.dir
+C:/Users/tulio/Repo/AED/build/src/CMakeFiles/rebuild_cache.dir
+C:/Users/tulio/Repo/AED/build/tests/CMakeFiles/test_calculadora.dir
+C:/Users/tulio/Repo/AED/build/tests/CMakeFiles/edit_cache.dir
+C:/Users/tulio/Repo/AED/build/tests/CMakeFiles/rebuild_cache.dir
