@@ -129,6 +129,20 @@ projeto/fast:
 	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\projeto.dir\build.make src/CMakeFiles/projeto.dir/build
 .PHONY : projeto/fast
 
+# Convenience name for target.
+src/CMakeFiles/ex1.dir/rule:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/CMakeFiles/ex1.dir/rule
+.PHONY : src/CMakeFiles/ex1.dir/rule
+
+# Convenience name for target.
+ex1: src/CMakeFiles/ex1.dir/rule
+.PHONY : ex1
+
+# fast build rule for target.
+ex1/fast:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\ex1.dir\build.make src/CMakeFiles/ex1.dir/build
+.PHONY : ex1/fast
+
 calc.obj: calc.c.obj
 .PHONY : calc.obj
 
@@ -153,6 +167,54 @@ calc.c.s:
 	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\projeto.dir\build.make src/CMakeFiles/projeto.dir/calc.c.s
 .PHONY : calc.c.s
 
+ex1.obj: ex1.c.obj
+.PHONY : ex1.obj
+
+# target to build an object file
+ex1.c.obj:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\ex1.dir\build.make src/CMakeFiles/ex1.dir/ex1.c.obj
+.PHONY : ex1.c.obj
+
+ex1.i: ex1.c.i
+.PHONY : ex1.i
+
+# target to preprocess a source file
+ex1.c.i:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\ex1.dir\build.make src/CMakeFiles/ex1.dir/ex1.c.i
+.PHONY : ex1.c.i
+
+ex1.s: ex1.c.s
+.PHONY : ex1.s
+
+# target to generate assembly for a file
+ex1.c.s:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\ex1.dir\build.make src/CMakeFiles/ex1.dir/ex1.c.s
+.PHONY : ex1.c.s
+
+simple_linked.obj: simple_linked.c.obj
+.PHONY : simple_linked.obj
+
+# target to build an object file
+simple_linked.c.obj:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\projeto.dir\build.make src/CMakeFiles/projeto.dir/simple_linked.c.obj
+.PHONY : simple_linked.c.obj
+
+simple_linked.i: simple_linked.c.i
+.PHONY : simple_linked.i
+
+# target to preprocess a source file
+simple_linked.c.i:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\projeto.dir\build.make src/CMakeFiles/projeto.dir/simple_linked.c.i
+.PHONY : simple_linked.c.i
+
+simple_linked.s: simple_linked.c.s
+.PHONY : simple_linked.s
+
+# target to generate assembly for a file
+simple_linked.c.s:
+	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f src\CMakeFiles\projeto.dir\build.make src/CMakeFiles/projeto.dir/simple_linked.c.s
+.PHONY : simple_linked.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -161,10 +223,17 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... ex1
 	@echo ... projeto
 	@echo ... calc.obj
 	@echo ... calc.i
 	@echo ... calc.s
+	@echo ... ex1.obj
+	@echo ... ex1.i
+	@echo ... ex1.s
+	@echo ... simple_linked.obj
+	@echo ... simple_linked.i
+	@echo ... simple_linked.s
 .PHONY : help
 
 

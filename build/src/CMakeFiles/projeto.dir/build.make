@@ -86,17 +86,34 @@ src/CMakeFiles/projeto.dir/calc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/projeto.dir/calc.c.s"
 	cd /d C:\Users\tulio\Repo\AED\build\src && C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\tulio\Repo\AED\src\calc.c -o CMakeFiles\projeto.dir\calc.c.s
 
+src/CMakeFiles/projeto.dir/simple_linked.c.obj: src/CMakeFiles/projeto.dir/flags.make
+src/CMakeFiles/projeto.dir/simple_linked.c.obj: src/CMakeFiles/projeto.dir/includes_C.rsp
+src/CMakeFiles/projeto.dir/simple_linked.c.obj: C:/Users/tulio/Repo/AED/src/simple_linked.c
+src/CMakeFiles/projeto.dir/simple_linked.c.obj: src/CMakeFiles/projeto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\tulio\Repo\AED\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/CMakeFiles/projeto.dir/simple_linked.c.obj"
+	cd /d C:\Users\tulio\Repo\AED\build\src && C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/projeto.dir/simple_linked.c.obj -MF CMakeFiles\projeto.dir\simple_linked.c.obj.d -o CMakeFiles\projeto.dir\simple_linked.c.obj -c C:\Users\tulio\Repo\AED\src\simple_linked.c
+
+src/CMakeFiles/projeto.dir/simple_linked.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/projeto.dir/simple_linked.c.i"
+	cd /d C:\Users\tulio\Repo\AED\build\src && C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\tulio\Repo\AED\src\simple_linked.c > CMakeFiles\projeto.dir\simple_linked.c.i
+
+src/CMakeFiles/projeto.dir/simple_linked.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/projeto.dir/simple_linked.c.s"
+	cd /d C:\Users\tulio\Repo\AED\build\src && C:\msys64\mingw64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\tulio\Repo\AED\src\simple_linked.c -o CMakeFiles\projeto.dir\simple_linked.c.s
+
 # Object files for target projeto
 projeto_OBJECTS = \
-"CMakeFiles/projeto.dir/calc.c.obj"
+"CMakeFiles/projeto.dir/calc.c.obj" \
+"CMakeFiles/projeto.dir/simple_linked.c.obj"
 
 # External object files for target projeto
 projeto_EXTERNAL_OBJECTS =
 
 src/libprojeto.a: src/CMakeFiles/projeto.dir/calc.c.obj
+src/libprojeto.a: src/CMakeFiles/projeto.dir/simple_linked.c.obj
 src/libprojeto.a: src/CMakeFiles/projeto.dir/build.make
 src/libprojeto.a: src/CMakeFiles/projeto.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\tulio\Repo\AED\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libprojeto.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\tulio\Repo\AED\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libprojeto.a"
 	cd /d C:\Users\tulio\Repo\AED\build\src && $(CMAKE_COMMAND) -P CMakeFiles\projeto.dir\cmake_clean_target.cmake
 	cd /d C:\Users\tulio\Repo\AED\build\src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\projeto.dir\link.txt --verbose=$(VERBOSE)
 

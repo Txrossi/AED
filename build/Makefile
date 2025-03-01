@@ -129,6 +129,19 @@ projeto/fast:
 .PHONY : projeto/fast
 
 #=============================================================================
+# Target rules for targets named ex1
+
+# Build rule for target.
+ex1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 ex1
+.PHONY : ex1
+
+# fast build rule for target.
+ex1/fast:
+	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\ex1.dir\build.make src/CMakeFiles/ex1.dir/build
+.PHONY : ex1/fast
+
+#=============================================================================
 # Target rules for targets named test_calculadora
 
 # Build rule for target.
@@ -149,6 +162,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... ex1
 	@echo ... projeto
 	@echo ... test_calculadora
 .PHONY : help

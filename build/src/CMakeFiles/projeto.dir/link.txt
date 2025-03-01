@@ -1,2 +1,2 @@
-C:\msys64\mingw64\bin\ar.exe qc libprojeto.a CMakeFiles/projeto.dir/calc.c.obj
+C:\msys64\mingw64\bin\ar.exe qc libprojeto.a CMakeFiles/projeto.dir/calc.c.obj CMakeFiles/projeto.dir/simple_linked.c.obj
 C:\msys64\mingw64\bin\ranlib.exe libprojeto.a

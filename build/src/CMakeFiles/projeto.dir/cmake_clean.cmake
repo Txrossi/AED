@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/projeto.dir/calc.c.obj"
   "CMakeFiles/projeto.dir/calc.c.obj.d"
+  "CMakeFiles/projeto.dir/simple_linked.c.obj"
+  "CMakeFiles/projeto.dir/simple_linked.c.obj.d"
   "libprojeto.a"
   "libprojeto.pdb"
 )
