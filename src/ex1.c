@@ -12,7 +12,6 @@
 // Marcar uma tarefa como concluída pelo ID.
 // Listar todas as tarefas mostrando seu ID, descrição e status.
 
-
 #define MAX_NAME_SIZE 50
 
 typedef enum
@@ -20,7 +19,7 @@ typedef enum
     TASK_FINISHED = 0,
     TASK_PROGRESS,
 
-}task_status_en;
+} task_status_en;
 typedef struct
 {
     uint8_t id;
@@ -57,11 +56,10 @@ int main()
 
     initList(&list);
 
-    
     static int opcao;
 
-    while (list.count < 10) 
-    {  // Loop infinito até o usuário escolher sair
+    while (list.count < 10)
+    { // Loop infinito até o usuário escolher sair
         printf("\nMenu:\n");
         printf("1 - Adicionar tarefa\n");
         printf("2 - Remover tarefa\n");
@@ -70,67 +68,64 @@ int main()
 
         scanf("%d", &opcao);
 
-        if (opcao == 1) {
+        if (opcao == 1)
+        {
             static uint8_t idx = 0;
 
             printf("Digite o ID da tarefa: ");
             scanf("%hhu", &tarefa[idx].id);
 
-            if(tarefa[idx].id == 0)
+            if (tarefa[idx].id == 0)
             {
                 printf("ID inválido! Tente novamente.\n");
                 continue;
             }
 
             printf("Digite a descrição da tarefa: ");
-            scanf(" %[^\n]", tarefa[idx].description);  // Le uma string com espacos
+            scanf(" %[^\n]", tarefa[idx].description); // Le uma string com espacos
 
             printf("Tarefa adicionada! ID: %d, Descriçao: %s\n", tarefa[idx].id, tarefa[idx].description);
 
-            if(insertNode(&list,&tarefa[idx],sizeof(tarefa)) == 1)
+            if (insertNode(&list, &tarefa[idx], sizeof(tarefa)) == 1)
             {
                 idx++;
             }
-
         }
-        else if (opcao == 2) 
+        else if (opcao == 2)
         {
             uint8_t id;
 
             printf("Digite o ID da tarefa a ser removida: ");
             scanf("%hhd", &id);
 
-            if(deleteNode(&list, &id, sizeof(tarefa->id)))
+            if (deleteNode(&list, &id, sizeof(tarefa->id)))
             {
                 printf("Tarefa %hhd removida!\n", id);
-                //colocar o status da tarefa como concluida
-                for (uint8_t i = 0; i < sizeof(tarefa)/sizeof(tarefa_t); i++)
+                // colocar o status da tarefa como concluida
+                for (uint8_t i = 0; i < sizeof(tarefa) / sizeof(tarefa_t); i++)
                 {
-                    tarefa[i].status = tarefa[i].id == id?TASK_FINISHED:TASK_PROGRESS;
+                    tarefa[i].status = tarefa[i].id == id ? TASK_FINISHED : TASK_PROGRESS;
                 }
             }
             else
             {
                 printf("Elemento nao encontrado\n");
             }
-            
         }
-        else if (opcao == 3) 
+        else if (opcao == 3)
         {
             printf("Saindo...\n");
-            break;  // Sai do loop
+            break; // Sai do loop
         }
-        else {
+        else
+        {
             printf("Opção inválida! Tente novamente.\n");
         }
-
 
         printf("-----------------------------\n");
         printNameList(&list);
         printf("-----------------------------\n");
     }
 
-        
     return 0;
 }
-
