@@ -5,27 +5,44 @@
 
 /* Linked list exercise: */
 
+// Implemente um sistema simples de gerenciamento de tarefas usando uma lista encadeada. O sistema deve permitir:
+
+// Adicionar uma nova tarefa com um identificador (ID), uma descrição e um status (pendente ou concluído).
+// Remover uma tarefa pelo ID.
+// Marcar uma tarefa como concluída pelo ID.
+// Listar todas as tarefas mostrando seu ID, descrição e status.
+
+
 #define MAX_NAME_SIZE 50
 
+typedef enum
+{
+    TASK_ON_HOLD = 0,
+    TASK_FINISHED,
+
+}task_status_en;
 typedef struct
 {
-    char nome[MAX_NAME_SIZE];
-    uint8_t idade;
-} pessoa_t;
+    uint8_t id;
+    task_status_en status;
+    char description[100];
+
+} tarefa_t;
 
 /**
  * @brief Prints the names and ages of all people in the linked list.
  *
  * @param list A pointer to the linked list containing pessoa_t elements.
  */
+
 void printNameList(LinkedList *list)
 {
     Node *current_node = list->head;
 
     while (current_node != NULL)
     {
-        pessoa_t *aux_pessoa = (pessoa_t *)current_node->data;
-        printf("Nome %s - Idade - %d \n", aux_pessoa->nome, aux_pessoa->idade);
+        tarefa_t *aux_pessoa = (tarefa_t *)current_node->data;
+        printf("ID %d - Description - %s \n", aux_pessoa->id, aux_pessoa->description);
         current_node = current_node->next;
     }
 }
@@ -34,20 +51,70 @@ int main()
 {
     LinkedList list = {0};
 
+    tarefa_t tarefa[10];
+
     initList(&list);
 
-    pessoa_t p1 = {"Joao", 25};
-    pessoa_t p2 = {"Maria", 30};
-    pessoa_t p3 = {"Carlos", 35};
-    pessoa_t p4 = {"Ana", 28};
+    
+    static int opcao;
 
-    insertNode(&list, &p1, sizeof(pessoa_t));
-    insertNode(&list, &p2, sizeof(pessoa_t));
-    insertNode(&list, &p3, sizeof(pessoa_t));
-    insertNode(&list, &p4, sizeof(pessoa_t));
-    deleteNode(&list, &p2, sizeof(pessoa_t));
+    while (list.count < 10) 
+    {  // Loop infinito até o usuário escolher sair
+        printf("\nMenu:\n");
+        printf("1 - Adicionar tarefa\n");
+        printf("2 - Remover tarefa\n");
+        printf("3 - Sair\n");
+        printf("Escolha uma opcao: ");
 
-    printNameList(&list);
+        scanf("%d", &opcao);
 
+        if (opcao == 1) {
+            static uint8_t idx = 0;
+
+            printf("Digite o ID da tarefa: ");
+            scanf("%hhu", &tarefa[idx].id);
+            printf("Digite a descrição da tarefa: ");
+            scanf(" %[^\n]", tarefa[idx].description);  // Le uma string com espacos
+
+            printf("Tarefa adicionada! ID: %d, Descriçao: %s\n", tarefa[idx].id, tarefa[idx].description);
+
+            if(insertNode(&list,&tarefa[idx],sizeof(tarefa)) == 1)
+            {
+                idx++;
+            }
+
+        }
+        else if (opcao == 2) {
+            uint8_t id;
+
+            printf("Digite o ID da tarefa a ser removida: ");
+            scanf("%hhd", &id);
+
+            if(deleteNode(&list, &id, sizeof(tarefa->id)))
+            {
+                printf("Tarefa %hhd removida!\n", id);
+            }
+            else
+            {
+                printf("Elemento nao encontrado\n");
+            }
+            
+        }
+        else if (opcao == 3) {
+            printf("Saindo...\n");
+            break;  // Sai do loop
+        }
+        else {
+            printf("Opção inválida! Tente novamente.\n");
+        }
+
+
+        printf("-----------------------------\n");
+        printNameList(&list);
+        printf("-----------------------------\n");
+    }
+
+        
     return 0;
 }
+
