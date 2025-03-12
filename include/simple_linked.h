@@ -16,4 +16,5 @@ typedef struct
 } LinkedList;
 
 void initList(LinkedList *list);
-int insert(LinkedList *list, void *data, size_t data_size);
+int insertNode(LinkedList *list, void *data, size_t data_size);
+int deleteNode(LinkedList *list, void *data, size_t data_size);

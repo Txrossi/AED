@@ -41,10 +41,11 @@ int main()
     pessoa_t p3 = {"Carlos", 35};
     pessoa_t p4 = {"Ana", 28};
 
-    insert(&list, &p1, sizeof(pessoa_t));
-    insert(&list, &p2, sizeof(pessoa_t));
-    insert(&list, &p3, sizeof(pessoa_t));
-    insert(&list, &p4, sizeof(pessoa_t));
+    insertNode(&list, &p1, sizeof(pessoa_t));
+    insertNode(&list, &p2, sizeof(pessoa_t));
+    insertNode(&list, &p3, sizeof(pessoa_t));
+    insertNode(&list, &p4, sizeof(pessoa_t));
+    deleteNode(&list, &p2, sizeof(pessoa_t));
 
     printNameList(&list);
 
