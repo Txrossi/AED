@@ -59,10 +59,20 @@ EQUALS = =
 CMAKE_SOURCE_DIR = C:\Users\tulio\Repo\AED
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\tulio\Repo\AED\build
+CMAKE_BINARY_DIR = C:\Users\tulio\Repo\AED
 
 #=============================================================================
 # Targets provided globally by CMake.
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	"C:\Program Files\CMake\bin\ctest.exe" $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -86,14 +96,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /d C:\Users\tulio\Repo\AED\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tulio\Repo\AED\build\CMakeFiles C:\Users\tulio\Repo\AED\build\tests\\CMakeFiles\progress.marks
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tulio\Repo\AED\build\CMakeFiles 0
+	cd /d C:\Users\tulio\Repo\AED && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tulio\Repo\AED\CMakeFiles C:\Users\tulio\Repo\AED\tests\\CMakeFiles\progress.marks
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\tulio\Repo\AED\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/clean
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -102,22 +112,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/preinstall
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/preinstall
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d C:\Users\tulio\Repo\AED\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\tulio\Repo\AED && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tests/CMakeFiles/test_calculadora.dir/rule:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/test_calculadora.dir/rule
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/test_calculadora.dir/rule
 .PHONY : tests/CMakeFiles/test_calculadora.dir/rule
 
 # Convenience name for target.
@@ -126,15 +136,30 @@ test_calculadora: tests/CMakeFiles/test_calculadora.dir/rule
 
 # fast build rule for target.
 test_calculadora/fast:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/build
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/build
 .PHONY : test_calculadora/fast
+
+# Convenience name for target.
+tests/CMakeFiles/linked_test.dir/rule:
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/linked_test.dir/rule
+.PHONY : tests/CMakeFiles/linked_test.dir/rule
+
+# Convenience name for target.
+linked_test: tests/CMakeFiles/linked_test.dir/rule
+.PHONY : linked_test
+
+# fast build rule for target.
+linked_test/fast:
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\linked_test.dir\build.make tests/CMakeFiles/linked_test.dir/build
+.PHONY : linked_test/fast
 
 __/unity/unity.obj: __/unity/unity.c.obj
 .PHONY : __/unity/unity.obj
 
 # target to build an object file
 __/unity/unity.c.obj:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/__/unity/unity.c.obj
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/__/unity/unity.c.obj
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\linked_test.dir\build.make tests/CMakeFiles/linked_test.dir/__/unity/unity.c.obj
 .PHONY : __/unity/unity.c.obj
 
 __/unity/unity.i: __/unity/unity.c.i
@@ -142,7 +167,8 @@ __/unity/unity.i: __/unity/unity.c.i
 
 # target to preprocess a source file
 __/unity/unity.c.i:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/__/unity/unity.c.i
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/__/unity/unity.c.i
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\linked_test.dir\build.make tests/CMakeFiles/linked_test.dir/__/unity/unity.c.i
 .PHONY : __/unity/unity.c.i
 
 __/unity/unity.s: __/unity/unity.c.s
@@ -150,15 +176,40 @@ __/unity/unity.s: __/unity/unity.c.s
 
 # target to generate assembly for a file
 __/unity/unity.c.s:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/__/unity/unity.c.s
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/__/unity/unity.c.s
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\linked_test.dir\build.make tests/CMakeFiles/linked_test.dir/__/unity/unity.c.s
 .PHONY : __/unity/unity.c.s
+
+list_linked_test.obj: list_linked_test.c.obj
+.PHONY : list_linked_test.obj
+
+# target to build an object file
+list_linked_test.c.obj:
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\linked_test.dir\build.make tests/CMakeFiles/linked_test.dir/list_linked_test.c.obj
+.PHONY : list_linked_test.c.obj
+
+list_linked_test.i: list_linked_test.c.i
+.PHONY : list_linked_test.i
+
+# target to preprocess a source file
+list_linked_test.c.i:
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\linked_test.dir\build.make tests/CMakeFiles/linked_test.dir/list_linked_test.c.i
+.PHONY : list_linked_test.c.i
+
+list_linked_test.s: list_linked_test.c.s
+.PHONY : list_linked_test.s
+
+# target to generate assembly for a file
+list_linked_test.c.s:
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\linked_test.dir\build.make tests/CMakeFiles/linked_test.dir/list_linked_test.c.s
+.PHONY : list_linked_test.c.s
 
 test_calculadora.obj: test_calculadora.c.obj
 .PHONY : test_calculadora.obj
 
 # target to build an object file
 test_calculadora.c.obj:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/test_calculadora.c.obj
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/test_calculadora.c.obj
 .PHONY : test_calculadora.c.obj
 
 test_calculadora.i: test_calculadora.c.i
@@ -166,7 +217,7 @@ test_calculadora.i: test_calculadora.c.i
 
 # target to preprocess a source file
 test_calculadora.c.i:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/test_calculadora.c.i
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/test_calculadora.c.i
 .PHONY : test_calculadora.c.i
 
 test_calculadora.s: test_calculadora.c.s
@@ -174,7 +225,7 @@ test_calculadora.s: test_calculadora.c.s
 
 # target to generate assembly for a file
 test_calculadora.c.s:
-	cd /d C:\Users\tulio\Repo\AED\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/test_calculadora.c.s
+	cd /d C:\Users\tulio\Repo\AED && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\test_calculadora.dir\build.make tests/CMakeFiles/test_calculadora.dir/test_calculadora.c.s
 .PHONY : test_calculadora.c.s
 
 # Help Target
@@ -185,10 +236,15 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... test
+	@echo ... linked_test
 	@echo ... test_calculadora
 	@echo ... __/unity/unity.obj
 	@echo ... __/unity/unity.i
 	@echo ... __/unity/unity.s
+	@echo ... list_linked_test.obj
+	@echo ... list_linked_test.i
+	@echo ... list_linked_test.s
 	@echo ... test_calculadora.obj
 	@echo ... test_calculadora.i
 	@echo ... test_calculadora.s
@@ -203,6 +259,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d C:\Users\tulio\Repo\AED\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\tulio\Repo\AED && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
