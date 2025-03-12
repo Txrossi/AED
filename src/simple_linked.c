@@ -117,7 +117,6 @@ list_err deleteNode(LinkedList *list, void *data, size_t data_size)
                 }
 
                 list->used[i] = FREE;
-                memset(current_node->data, 0x00, data_size);
                 list->count--;
                 list->freeIndex = i;
                 return LIST_ERR_OK;
