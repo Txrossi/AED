@@ -17,7 +17,7 @@ add_executable(test_calculadora ${CALC})
 target_link_libraries(test_calculadora projeto)
 add_test(calculator_test_name test_calculadora)
 
-# Cria o executável do teste e Especifica que o teste precisa da biblioteca principal
+# Creates the test executable and specifies that the test needs the main library
 add_executable(linked_test ${LIST})
 target_link_libraries(linked_test projeto)
 add_test(linked_list_test_name linked_test)
