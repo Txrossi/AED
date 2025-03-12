@@ -17,8 +17,8 @@
 
 typedef enum
 {
-    TASK_ON_HOLD = 0,
-    TASK_FINISHED,
+    TASK_FINISHED = 0,
+    TASK_PROGRESS,
 
 }task_status_en;
 typedef struct
@@ -53,6 +53,8 @@ int main()
 
     tarefa_t tarefa[10];
 
+    memset(tarefa, 0x00, sizeof(tarefa)); // Initialize the array with zeros
+
     initList(&list);
 
     
@@ -84,7 +86,8 @@ int main()
             }
 
         }
-        else if (opcao == 2) {
+        else if (opcao == 2) 
+        {
             uint8_t id;
 
             printf("Digite o ID da tarefa a ser removida: ");
@@ -100,7 +103,8 @@ int main()
             }
             
         }
-        else if (opcao == 3) {
+        else if (opcao == 3) 
+        {
             printf("Saindo...\n");
             break;  // Sai do loop
         }
