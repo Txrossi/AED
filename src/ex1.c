@@ -75,6 +75,13 @@ int main()
 
             printf("Digite o ID da tarefa: ");
             scanf("%hhu", &tarefa[idx].id);
+
+            if(tarefa[idx].id == 0)
+            {
+                printf("ID inválido! Tente novamente.\n");
+                continue;
+            }
+
             printf("Digite a descrição da tarefa: ");
             scanf(" %[^\n]", tarefa[idx].description);  // Le uma string com espacos
 
@@ -96,6 +103,11 @@ int main()
             if(deleteNode(&list, &id, sizeof(tarefa->id)))
             {
                 printf("Tarefa %hhd removida!\n", id);
+                //colocar o status da tarefa como concluida
+                for (uint8_t i = 0; i < sizeof(tarefa)/sizeof(tarefa_t); i++)
+                {
+                    tarefa[i].status = tarefa[i].id == id?TASK_FINISHED:TASK_PROGRESS;
+                }
             }
             else
             {
