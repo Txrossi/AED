@@ -13,6 +13,7 @@ void initList(LinkedList *list)
 {
     list->head = NULL;
     list->count = 0;
+    list->freeIndex = 0;
     memset(list->used, 0, sizeof(list->used));
 }
 
@@ -41,19 +42,30 @@ static Node *allocateNode(LinkedList *list)
     {
         return NULL;
     }
-    else
+
+    for (uint16_t i = list->freeIndex; i < MAX_NODES; i++)
     {
-        for (uint16_t i = 0; i < MAX_NODES; i++)
+        if (list->used[i] == FREE)
         {
-            if (list->used[i] == FREE)
-            {
-                list->used[i] = OCCUPIED;
-                list->count++;
-                return &list->nodes[i];
-            }
+            list->used[i] = OCCUPIED;
+            list->count++;
+            list->freeIndex = i + 1;
+            return &list->nodes[i];
         }
-        return NULL;
     }
+
+    for (uint16_t i = 0; i < list->freeIndex; i++)
+    {
+        if (list->used[i] == FREE)
+        {
+            list->used[i] = OCCUPIED;
+            list->count++;
+            list->freeIndex = i + 1;
+            return &list->nodes[i];
+        }
+    }
+
+    return NULL;
 }
 
 /**
@@ -88,26 +100,33 @@ list_err deleteNode(LinkedList *list, void *data, size_t data_size)
     {
         return LIST_ERR_EMPTY;
     }
-    
-    while(current_node != NULL)
+
+    for (uint16_t i = 0; i < MAX_NODES; i++)
     {
-        if(memcmp(current_node->data, data, data_size) == 0)
+        if (list->used[i] == OCCUPIED)
         {
-            if (previous_node == NULL)
+            if(memcmp(current_node->data, data, data_size) == 0)
             {
-                list->head = current_node->next;
+                if (previous_node == NULL)
+                {
+                    list->head = current_node->next;
+                }
+                else
+                {
+                    previous_node->next = current_node->next;
+                }
+                
+                list->used[i] = FREE;
+                memset(current_node->data, 0x00, data_size);
+                list->count--;
+                list->freeIndex = i;
+                return LIST_ERR_OK;
             }
-            else
-            {
-                previous_node->next = current_node->next;
-            }
-            memset(current_node->data, 0x00, data_size);
-            list->count--;
-            return LIST_ERR_OK;
-        }
         previous_node = current_node;
         current_node = current_node->next;
+        }
     }
+    
 
     return -1;
 }
