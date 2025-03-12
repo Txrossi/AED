@@ -1,10 +1,10 @@
-Start testing: Mar 12 12:54 Hora oficial do Brasil
+Start testing: Mar 12 19:18 Hora oficial do Brasil
 ----------------------------------------------------------
 1/2 Testing: calculator_test_name
 1/2 Test: calculator_test_name
 Command: "C:/Users/tulio/Repo/AED/build/tests/test_calculadora.exe"
 Directory: C:/Users/tulio/Repo/AED/build/tests
-"calculator_test_name" start time: Mar 12 12:54 Hora oficial do Brasil
+"calculator_test_name" start time: Mar 12 19:18 Hora oficial do Brasil
 Output:
 ----------------------------------------------------------
 C:/Users/tulio/Repo/AED/tests/test_calculadora.c:21:test_soma:PASS
@@ -16,7 +16,7 @@ OK
 Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"calculator_test_name" end time: Mar 12 12:54 Hora oficial do Brasil
+"calculator_test_name" end time: Mar 12 19:18 Hora oficial do Brasil
 "calculator_test_name" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -24,7 +24,7 @@ Test Passed.
 2/2 Test: linked_list_test_name
 Command: "C:/Users/tulio/Repo/AED/build/tests/linked_test.exe"
 Directory: C:/Users/tulio/Repo/AED/build/tests
-"linked_list_test_name" start time: Mar 12 12:54 Hora oficial do Brasil
+"linked_list_test_name" start time: Mar 12 19:18 Hora oficial do Brasil
 Output:
 ----------------------------------------------------------
 C:/Users/tulio/Repo/AED/tests/list_linked_test.c:69:test_initList:PASS
@@ -36,11 +36,11 @@ C:/Users/tulio/Repo/AED/tests/list_linked_test.c:72:test_deleteNode_not_found:PA
 4 Tests 0 Failures 0 Ignored 
 OK
 <end of output>
-Test time =   0.06 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"linked_list_test_name" end time: Mar 12 12:54 Hora oficial do Brasil
+"linked_list_test_name" end time: Mar 12 19:18 Hora oficial do Brasil
 "linked_list_test_name" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Mar 12 12:54 Hora oficial do Brasil
+End testing: Mar 12 19:18 Hora oficial do Brasil

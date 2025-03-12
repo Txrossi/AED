@@ -50,3 +50,14 @@
 375	641	7634980542512742	src/ex1.exe	1af7d74f8faf363c
 386	645	7634980542582764	tests/test_calculadora.exe	4cccb3c6921bf9fb
 400	649	7634980542702743	tests/linked_test.exe	fca97c54067604c6
+1	257	7635211145753490	src/CMakeFiles/projeto.dir/calc.c.obj	629635e901707a9f
+25	368	7635211146600670	tests/CMakeFiles/test_calculadora.dir/test_calculadora.c.obj	497afb0913b82ff8
+17	375	7635211146881313	src/CMakeFiles/ex1.dir/ex1.c.obj	c7f2d87c29f8bd33
+8	385	7635211147081808	src/CMakeFiles/projeto.dir/simple_linked.c.obj	4eafa170f8ce4ba4
+42	425	7635211147488095	tests/CMakeFiles/linked_test.dir/list_linked_test.c.obj	da1d218054d25aff
+33	591	7635211149302921	tests/CMakeFiles/test_calculadora.dir/__/unity/unity.c.obj	7cfde6105a00c9d4
+70	616	7635211149513535	tests/CMakeFiles/linked_test.dir/__/unity/unity.c.obj	3ad041122272c0c
+386	619	7635211149533491	src/libprojeto.a	84f2cff4724e8620
+620	1016	7635211152365922	src/ex1.exe	1af7d74f8faf363c
+636	1024	7635211152626620	tests/test_calculadora.exe	4cccb3c6921bf9fb
+653	1027	7635211152761809	tests/linked_test.exe	fca97c54067604c6
