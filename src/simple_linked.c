@@ -20,7 +20,7 @@ void initList(LinkedList *list)
 /**
  * Verifica se a lista está cheia.
  */
-static uint8_t isFull(LinkedList* list)
+static uint8_t isFull(LinkedList *list)
 {
     return list->count >= MAX_NODES;
 }
@@ -28,7 +28,7 @@ static uint8_t isFull(LinkedList* list)
 /**
  * Verifica se a lista está vazia.
  */
-static uint8_t isEmpty(LinkedList* list)
+static uint8_t isEmpty(LinkedList *list)
 {
     return list->count == 0;
 }
@@ -105,7 +105,7 @@ list_err deleteNode(LinkedList *list, void *data, size_t data_size)
     {
         if (list->used[i] == OCCUPIED)
         {
-            if(memcmp(current_node->data, data, data_size) == 0)
+            if (memcmp(current_node->data, data, data_size) == 0)
             {
                 if (previous_node == NULL)
                 {
@@ -115,19 +115,17 @@ list_err deleteNode(LinkedList *list, void *data, size_t data_size)
                 {
                     previous_node->next = current_node->next;
                 }
-                
+
                 list->used[i] = FREE;
                 memset(current_node->data, 0x00, data_size);
                 list->count--;
                 list->freeIndex = i;
                 return LIST_ERR_OK;
             }
-        previous_node = current_node;
-        current_node = current_node->next;
+            previous_node = current_node;
+            current_node = current_node->next;
         }
     }
-    
 
     return -1;
 }
-
