@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
-#include <simple_linked.h>
+#include "simple_linked.h"
 
 #define OCCUPIED 1
 #define FREE 0
@@ -17,11 +17,27 @@ void initList(LinkedList *list)
 }
 
 /**
+ * Verifica se a lista está cheia.
+ */
+static uint8_t isFull(LinkedList* list)
+{
+    return list->count >= MAX_NODES;
+}
+
+/**
+ * Verifica se a lista está vazia.
+ */
+static uint8_t isEmpty(LinkedList* list)
+{
+    return list->count == 0;
+}
+
+/**
  * Aloca um nó dentro do array estático.
  */
 static Node *allocateNode(LinkedList *list)
 {
-    if (list->count >= MAX_NODES)
+    if (isFull(list))
     {
         return NULL;
     }
@@ -43,13 +59,13 @@ static Node *allocateNode(LinkedList *list)
 /**
  * Insere um novo elemento na lista.
  */
-int insertNode(LinkedList *list, void *data, size_t data_size)
+list_err insertNode(LinkedList *list, void *data, size_t data_size)
 {
     Node *newNode = allocateNode(list);
 
     if (newNode == NULL)
     {
-        return 0;
+        return LIST_ERR_FULL;
     }
 
     newNode->data = data;
@@ -57,27 +73,42 @@ int insertNode(LinkedList *list, void *data, size_t data_size)
     newNode->data_size = data_size;
     list->head = newNode;
 
-    return 1; // Sucesso
+    return LIST_ERR_OK; // Sucesso
 }
-
 
 /**
- * Insere um novo elemento na lista.
+ * Remove um elemento da lista.
  */
-int deleteNode(LinkedList *list, void *data, size_t data_size)
+list_err deleteNode(LinkedList *list, void *data, size_t data_size)
 {
     Node *current_node = list->head;
+    Node *previous_node = NULL;
 
+    if (isEmpty(list))
+    {
+        return LIST_ERR_EMPTY;
+    }
+    
     while(current_node != NULL)
     {
-        if(memcmp(current_node->data,data, data_size) == 0)
+        if(memcmp(current_node->data, data, data_size) == 0)
         {
-            Node *temp_node = current_node->next;
+            if (previous_node == NULL)
+            {
+                list->head = current_node->next;
+            }
+            else
+            {
+                previous_node->next = current_node->next;
+            }
             memset(current_node->data, 0x00, data_size);
-            current_node = temp_node;
-            break;
+            list->count--;
+            return LIST_ERR_OK;
         }
+        previous_node = current_node;
         current_node = current_node->next;
     }
+
     return -1;
 }
+

@@ -41,11 +41,11 @@ void test_deleteNode(void) {
     insertNode(&list, &data1, sizeof(data1));
     insertNode(&list, &data2, sizeof(data2));
 
-    TEST_ASSERT_EQUAL(0, deleteNode(&list, &data1, sizeof(data1)));
+    TEST_ASSERT_EQUAL(1, deleteNode(&list, &data1, sizeof(data1)));
     TEST_ASSERT_EQUAL(1, list.count);
     TEST_ASSERT_EQUAL(&data2, list.head->data);
 
-    TEST_ASSERT_EQUAL(0, deleteNode(&list, &data2, sizeof(data2)));
+    TEST_ASSERT_EQUAL(1, deleteNode(&list, &data2, sizeof(data2)));
     TEST_ASSERT_EQUAL(0, list.count);
     TEST_ASSERT_NULL(list.head);
 }
