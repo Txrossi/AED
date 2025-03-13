@@ -4,6 +4,7 @@
 
 typedef enum 
 {
+    LIST_ERR_NOT_FOUND = -4,
     LIST_ERR_EMPTY = -3,
     LIST_ERR_FULL = -2,
     LIST_ERR_UNDEFINED = -1,

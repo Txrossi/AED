@@ -43,25 +43,15 @@ static Node *allocateNode(LinkedList *list)
         return NULL;
     }
 
-    for (uint16_t i = list->freeIndex; i < MAX_NODES; i++)
+    for (uint16_t i = 0; i < MAX_NODES; i++)
     {
-        if (list->used[i] == FREE)
+        uint16_t index = (list->freeIndex + i) % MAX_NODES;
+        if (list->used[index] == FREE)
         {
-            list->used[i] = OCCUPIED;
+            list->used[index] = OCCUPIED;
             list->count++;
-            list->freeIndex = i + 1;
-            return &list->nodes[i];
-        }
-    }
-
-    for (uint16_t i = 0; i < list->freeIndex; i++)
-    {
-        if (list->used[i] == FREE)
-        {
-            list->used[i] = OCCUPIED;
-            list->count++;
-            list->freeIndex = i + 1;
-            return &list->nodes[i];
+            list->freeIndex = (index + 1) % MAX_NODES; 
+            return &list->nodes[index];
         }
     }
 
@@ -85,46 +75,44 @@ list_err insertNode(LinkedList *list, void *data, size_t data_size)
     newNode->data_size = data_size;
     list->head = newNode;
 
-    return LIST_ERR_OK; // Sucesso
+    return LIST_ERR_OK; // Success
 }
-
 /**
  * Remove um elemento da lista.
  */
 list_err deleteNode(LinkedList *list, void *data, size_t data_size)
 {
-    Node *current_node = list->head;
-    Node *previous_node = NULL;
-
     if (isEmpty(list))
     {
         return LIST_ERR_EMPTY;
     }
 
-    for (uint16_t i = 0; i < MAX_NODES; i++)
-    {
-        if (list->used[i] == OCCUPIED)
-        {
-            if (memcmp(current_node->data, data, data_size) == 0)
-            {
-                if (previous_node == NULL)
-                {
-                    list->head = current_node->next;
-                }
-                else
-                {
-                    previous_node->next = current_node->next;
-                }
+    Node *current_node = list->head;
+    Node *previous_node = NULL;
 
-                list->used[i] = FREE;
-                list->count--;
-                list->freeIndex = i;
-                return LIST_ERR_OK;
+    while (current_node != NULL)
+    {
+        if (memcmp(current_node->data, data, data_size) == 0)
+        {
+            if (previous_node == NULL)
+            {
+                list->head = current_node->next;
             }
-            previous_node = current_node;
-            current_node = current_node->next;
+            else
+            {
+                previous_node->next = current_node->next;
+            }
+
+            uint16_t index = current_node - list->nodes;
+            list->used[index] = FREE;
+            list->count--;
+            list->freeIndex = index;
+            return LIST_ERR_OK;
         }
+
+        previous_node = current_node;
+        current_node = current_node->next;
     }
 
-    return -1;
+    return LIST_ERR_NOT_FOUND;
 }
