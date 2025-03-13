@@ -70,25 +70,27 @@ int main()
 
         if (opcao == 1)
         {
-            static uint8_t idx = 0;
+            uint8_t idx = 0;
 
-            printf("Digite o ID da tarefa: ");
-            scanf("%hhu", &tarefa[idx].id);
-
-            if (tarefa[idx].id == 0)
+            //pegar ID automaticamente
+            for(uint8_t i = 0; i < sizeof(tarefa) / sizeof(tarefa_t); i++)
             {
-                printf("ID inválido! Tente novamente.\n");
-                continue;
+                if(tarefa[i].status == TASK_FINISHED)
+                {
+                    idx = i;
+                    break;
+                }
             }
+            tarefa[idx].id = idx;
 
             printf("Digite a descrição da tarefa: ");
             scanf(" %[^\n]", tarefa[idx].description); // Le uma string com espacos
 
             printf("Tarefa adicionada! ID: %d, Descriçao: %s\n", tarefa[idx].id, tarefa[idx].description);
 
-            if (insertNode(&list, &tarefa[idx], sizeof(tarefa)) == 1)
+            if (insertNode(&list, &tarefa[idx], sizeof(tarefa[idx])) == 1)
             {
-                idx++;
+                tarefa[idx].status = TASK_PROGRESS;
             }
         }
         else if (opcao == 2)
